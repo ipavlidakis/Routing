@@ -68,11 +68,10 @@ public extension Navigating {
 
     func navigator_popToRoot(animated: Bool, completion: CompletionBlock?) {
         if isWindow { navigator_window?.navigator?.navigator_popToRoot(animated: animated, completion: completion) }
-        else if isNavigationController {
-            navigator_navigationController?.popViewController(animated: animated)
+        else if let navigationController = navigator_navigationController, navigationController.viewControllers.count > 1 {
+            navigationController.popToRootViewController(animated: animated)
             navigator_transition(completion: completion)
         }
-        else { assertionFailure() }
     }
 
     // MARK: Preent & Dismiss
@@ -93,7 +92,8 @@ public extension Navigating {
 
     func navigator_dismiss(animated: Bool, completion: CompletionBlock?) {
         if isWindow { navigator_window?.navigator?.navigator_dismiss(animated: animated, completion: completion) }
-        else { navigator_viewController?.dismiss(animated: animated, completion: completion) }
+        else if navigator_viewController?.presentedViewController != nil { navigator_viewController?.dismiss(animated: animated, completion: completion) }
+        else { completion?() }
     }
 
     // MARK: Combinations

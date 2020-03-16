@@ -50,8 +50,11 @@ public final class Router: NSObject, Routing {
         super.init()
 
         if let wireframe = wireframe {
-            self.navigator.navigator_navigationController?.viewControllers = [wireframe.initialViewController()]
-            self.navigator.navigator_tabBarController?.viewControllers = [wireframe.initialViewController()]
+            if navigator.isNavigationController {
+                self.navigator.navigator_navigationController?.viewControllers = [wireframe.initialViewController()]
+            } else if navigator.isTabBarController {
+                self.navigator.navigator_tabBarController?.viewControllers = [wireframe.initialViewController()]
+            }
         }
 
         if let tabBarController = navigator.navigator_tabBarController {

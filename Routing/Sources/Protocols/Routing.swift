@@ -16,9 +16,10 @@ public protocol Routing {
     var isActive: Bool { get }
     var navigator: Navigating { get }
 
+    func invalidate()
+    func add(_ router: Routing) 
     func canHandle(_ url: AppURL) -> Bool
     func handle(_ url: AppURL)
-    func didBecomeActiveAfterInvalidation()
-    func invalidate()
     func router(for rootViewController: UIViewController) -> Routing?
+    func didBecomeActiveAfterInvalidation()
 }
