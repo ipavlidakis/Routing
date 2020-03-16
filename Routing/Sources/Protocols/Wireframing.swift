@@ -11,7 +11,7 @@ import UIKit
 
 public protocol Wireframing {
 
-    func canHandle(_ url: URL) -> Bool
-    func navigation(for url: URL) -> NavigationType
+    func canHandle(_ url: AppURL) -> Bool
+    func navigation(for url: AppURL) -> NavigationType
     func initialViewController() -> UIViewController
 }

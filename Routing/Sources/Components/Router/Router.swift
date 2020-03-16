@@ -73,7 +73,7 @@ public final class Router: NSObject, Routing {
         }
     }
 
-    public func canHandle(_ url: URL) -> Bool {
+    public func canHandle(_ url: AppURL) -> Bool {
 
         if wireframe?.canHandle(url) == true { return true }
 
@@ -84,7 +84,7 @@ public final class Router: NSObject, Routing {
         return true
     }
 
-    public func handle(_ url: URL) {
+    public func handle(_ url: AppURL) {
         if activeRouter?.canHandle(url) == true {
             activeRouter?.handle(url)
         } else if let router = routers.first(where: { $0.canHandle(url) }) {

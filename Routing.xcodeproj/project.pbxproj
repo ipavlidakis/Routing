@@ -17,6 +17,7 @@
 		402C420C241EFB1200DC2376 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C420B241EFB1200DC2376 /* Router.swift */; };
 		402C420E241EFB5400DC2376 /* Router+UITabBarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C420D241EFB5400DC2376 /* Router+UITabBarControllerDelegate.swift */; };
 		402C4210241EFBE800DC2376 /* Navigating+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C420F241EFBE800DC2376 /* Navigating+Default.swift */; };
+		402C4217241F007300DC2376 /* AppURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C4216241F007300DC2376 /* AppURL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,7 @@
 		402C420B241EFB1200DC2376 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		402C420D241EFB5400DC2376 /* Router+UITabBarControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+UITabBarControllerDelegate.swift"; sourceTree = "<group>"; };
 		402C420F241EFBE800DC2376 /* Navigating+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigating+Default.swift"; sourceTree = "<group>"; };
+		402C4216241F007300DC2376 /* AppURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppURL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 		402C4209241EFB0600DC2376 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				402C4215241F006A00DC2376 /* AppURL */,
 				402C420A241EFB0C00DC2376 /* Router */,
 			);
 			path = Components;
@@ -135,6 +138,14 @@
 				402C420B241EFB1200DC2376 /* Router.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		402C4215241F006A00DC2376 /* AppURL */ = {
+			isa = PBXGroup;
+			children = (
+				402C4216241F007300DC2376 /* AppURL.swift */,
+			);
+			path = AppURL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +214,7 @@
 				402C41FD241EFA3400DC2376 /* Wireframing.swift in Sources */,
 				402C41FF241EFA5200DC2376 /* Navigating.swift in Sources */,
 				402C41FA241EF9E000DC2376 /* NavigationType.swift in Sources */,
+				402C4217241F007300DC2376 /* AppURL.swift in Sources */,
 				402C4210241EFBE800DC2376 /* Navigating+Default.swift in Sources */,
 				402C4204241EFAC100DC2376 /* UINavigationController+Navigating.swift in Sources */,
 				402C420E241EFB5400DC2376 /* Router+UITabBarControllerDelegate.swift in Sources */,
