@@ -121,6 +121,9 @@ public final class Router: NSObject, Routing {
                     navigator.navigator_pop(animated: animated, completion: { [weak self] in
                         self?.navigator.navigator_push(viewController: viewController, animated: animated, completion: nil)
                     })
+                case .none:
+                    assertionFailure("Invalid navigationType received")
+                    break
             }
         }
     }

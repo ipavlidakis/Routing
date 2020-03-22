@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 public enum NavigationType {
+    case none
     case push(UIViewController, Bool)
     case present(UIViewController, Bool)
     case popToRoot(Bool)
