@@ -18,6 +18,30 @@
 		402C420E241EFB5400DC2376 /* Router+UITabBarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C420D241EFB5400DC2376 /* Router+UITabBarControllerDelegate.swift */; };
 		402C4210241EFBE800DC2376 /* Navigating+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C420F241EFBE800DC2376 /* Navigating+Default.swift */; };
 		402C4217241F007300DC2376 /* AppURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C4216241F007300DC2376 /* AppURL.swift */; };
+		4065D8712426FAC000ABCC6C /* RoutingFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 4065D86F2426FAC000ABCC6C /* RoutingFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4065D88D2426FCDC00ABCC6C /* AppURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C4216241F007300DC2376 /* AppURL.swift */; };
+		4065D88E2426FCDC00ABCC6C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C420B241EFB1200DC2376 /* Router.swift */; };
+		4065D88F2426FCDC00ABCC6C /* UIWindown+Navigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C4201241EFA9700DC2376 /* UIWindown+Navigating.swift */; };
+		4065D8902426FCDC00ABCC6C /* UINavigationController+Navigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C4203241EFAC100DC2376 /* UINavigationController+Navigating.swift */; };
+		4065D8912426FCDC00ABCC6C /* UITabBarController+Navigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C4205241EFACC00DC2376 /* UITabBarController+Navigating.swift */; };
+		4065D8922426FCDC00ABCC6C /* Router+UITabBarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C420D241EFB5400DC2376 /* Router+UITabBarControllerDelegate.swift */; };
+		4065D8932426FCDC00ABCC6C /* Navigating+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C420F241EFBE800DC2376 /* Navigating+Default.swift */; };
+		4065D8942426FCDC00ABCC6C /* Wireframing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C41FC241EFA3400DC2376 /* Wireframing.swift */; };
+		4065D8952426FCDC00ABCC6C /* Navigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C41FE241EFA5200DC2376 /* Navigating.swift */; };
+		4065D8962426FCDC00ABCC6C /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C4207241EFAEB00DC2376 /* Routing.swift */; };
+		4065D8972426FCDC00ABCC6C /* NavigationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C41F9241EF9E000DC2376 /* NavigationType.swift */; };
+		408027DB2427057A00F38E0D /* Routing_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 408027D92427057A00F38E0D /* Routing_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		408027DF2427058E00F38E0D /* AppURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C4216241F007300DC2376 /* AppURL.swift */; };
+		408027E02427058E00F38E0D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C420B241EFB1200DC2376 /* Router.swift */; };
+		408027E12427058E00F38E0D /* UIWindown+Navigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C4201241EFA9700DC2376 /* UIWindown+Navigating.swift */; };
+		408027E22427058E00F38E0D /* UINavigationController+Navigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C4203241EFAC100DC2376 /* UINavigationController+Navigating.swift */; };
+		408027E32427058E00F38E0D /* UITabBarController+Navigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C4205241EFACC00DC2376 /* UITabBarController+Navigating.swift */; };
+		408027E42427058E00F38E0D /* Router+UITabBarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C420D241EFB5400DC2376 /* Router+UITabBarControllerDelegate.swift */; };
+		408027E52427058E00F38E0D /* Navigating+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C420F241EFBE800DC2376 /* Navigating+Default.swift */; };
+		408027E62427058E00F38E0D /* Wireframing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C41FC241EFA3400DC2376 /* Wireframing.swift */; };
+		408027E72427058E00F38E0D /* Navigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C41FE241EFA5200DC2376 /* Navigating.swift */; };
+		408027E82427058E00F38E0D /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C4207241EFAEB00DC2376 /* Routing.swift */; };
+		408027E92427058E00F38E0D /* NavigationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C41F9241EF9E000DC2376 /* NavigationType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,7 +57,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		402C41ED241EF91300DC2376 /* libRouting.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRouting.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		402C41ED241EF91300DC2376 /* libRoutingStaticLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRoutingStaticLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		402C41F9241EF9E000DC2376 /* NavigationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationType.swift; sourceTree = "<group>"; };
 		402C41FC241EFA3400DC2376 /* Wireframing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wireframing.swift; sourceTree = "<group>"; };
 		402C41FE241EFA5200DC2376 /* Navigating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigating.swift; sourceTree = "<group>"; };
@@ -45,10 +69,30 @@
 		402C420D241EFB5400DC2376 /* Router+UITabBarControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+UITabBarControllerDelegate.swift"; sourceTree = "<group>"; };
 		402C420F241EFBE800DC2376 /* Navigating+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigating+Default.swift"; sourceTree = "<group>"; };
 		402C4216241F007300DC2376 /* AppURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppURL.swift; sourceTree = "<group>"; };
+		4065D86D2426FAC000ABCC6C /* Routing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Routing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4065D86F2426FAC000ABCC6C /* RoutingFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoutingFramework.h; sourceTree = "<group>"; };
+		4065D8702426FAC000ABCC6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		408027D72427057A00F38E0D /* Routing_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Routing_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		408027D92427057A00F38E0D /* Routing_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Routing_tvOS.h; sourceTree = "<group>"; };
+		408027DA2427057A00F38E0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		402C41EA241EF91300DC2376 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4065D86A2426FAC000ABCC6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		408027D42427057A00F38E0D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -62,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				402C41EF241EF91300DC2376 /* Routing */,
+				4065D86E2426FAC000ABCC6C /* RoutingFramework */,
+				408027D82427057A00F38E0D /* Routing-tvOS */,
 				402C41EE241EF91300DC2376 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,7 +115,9 @@
 		402C41EE241EF91300DC2376 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				402C41ED241EF91300DC2376 /* libRouting.a */,
+				402C41ED241EF91300DC2376 /* libRoutingStaticLibrary.a */,
+				4065D86D2426FAC000ABCC6C /* Routing.framework */,
+				408027D72427057A00F38E0D /* Routing_tvOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,7 +125,9 @@
 		402C41EF241EF91300DC2376 /* Routing */ = {
 			isa = PBXGroup;
 			children = (
+				4065D88C2426FCC600ABCC6C /* Resources */,
 				402C41F7241EF99800DC2376 /* Sources */,
+				4065D86F2426FAC000ABCC6C /* RoutingFramework.h */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -148,12 +198,55 @@
 			path = AppURL;
 			sourceTree = "<group>";
 		};
+		4065D86E2426FAC000ABCC6C /* RoutingFramework */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RoutingFramework;
+			sourceTree = "<group>";
+		};
+		4065D88C2426FCC600ABCC6C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4065D8702426FAC000ABCC6C /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		408027D82427057A00F38E0D /* Routing-tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				408027D92427057A00F38E0D /* Routing_tvOS.h */,
+				408027DA2427057A00F38E0D /* Info.plist */,
+			);
+			path = "Routing-tvOS";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		4065D8682426FAC000ABCC6C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4065D8712426FAC000ABCC6C /* RoutingFramework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		408027D22427057A00F38E0D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				408027DB2427057A00F38E0D /* Routing_tvOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		402C41EC241EF91300DC2376 /* Routing */ = {
+		402C41EC241EF91300DC2376 /* RoutingStaticLibrary */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 402C41F4241EF91300DC2376 /* Build configuration list for PBXNativeTarget "Routing" */;
+			buildConfigurationList = 402C41F4241EF91300DC2376 /* Build configuration list for PBXNativeTarget "RoutingStaticLibrary" */;
 			buildPhases = (
 				402C41E9241EF91300DC2376 /* Sources */,
 				402C41EA241EF91300DC2376 /* Frameworks */,
@@ -163,10 +256,46 @@
 			);
 			dependencies = (
 			);
-			name = Routing;
+			name = RoutingStaticLibrary;
 			productName = Routing;
-			productReference = 402C41ED241EF91300DC2376 /* libRouting.a */;
+			productReference = 402C41ED241EF91300DC2376 /* libRoutingStaticLibrary.a */;
 			productType = "com.apple.product-type.library.static";
+		};
+		4065D86C2426FAC000ABCC6C /* Routing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4065D8722426FAC000ABCC6C /* Build configuration list for PBXNativeTarget "Routing" */;
+			buildPhases = (
+				4065D8682426FAC000ABCC6C /* Headers */,
+				4065D8692426FAC000ABCC6C /* Sources */,
+				4065D86A2426FAC000ABCC6C /* Frameworks */,
+				4065D86B2426FAC000ABCC6C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Routing;
+			productName = RoutingFramework;
+			productReference = 4065D86D2426FAC000ABCC6C /* Routing.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		408027D62427057A00F38E0D /* Routing-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 408027DE2427057A00F38E0D /* Build configuration list for PBXNativeTarget "Routing-tvOS" */;
+			buildPhases = (
+				408027D22427057A00F38E0D /* Headers */,
+				408027D32427057A00F38E0D /* Sources */,
+				408027D42427057A00F38E0D /* Frameworks */,
+				408027D52427057A00F38E0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Routing-tvOS";
+			productName = "Routing-tvOS";
+			productReference = 408027D72427057A00F38E0D /* Routing_tvOS.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -181,6 +310,12 @@
 					402C41EC241EF91300DC2376 = {
 						CreatedOnToolsVersion = 11.3;
 						LastSwiftMigration = 1130;
+					};
+					4065D86C2426FAC000ABCC6C = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					408027D62427057A00F38E0D = {
+						CreatedOnToolsVersion = 11.3;
 					};
 				};
 			};
@@ -197,10 +332,29 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				402C41EC241EF91300DC2376 /* Routing */,
+				402C41EC241EF91300DC2376 /* RoutingStaticLibrary */,
+				4065D86C2426FAC000ABCC6C /* Routing */,
+				408027D62427057A00F38E0D /* Routing-tvOS */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4065D86B2426FAC000ABCC6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		408027D52427057A00F38E0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		402C41E9241EF91300DC2376 /* Sources */ = {
@@ -218,6 +372,42 @@
 				402C4210241EFBE800DC2376 /* Navigating+Default.swift in Sources */,
 				402C4204241EFAC100DC2376 /* UINavigationController+Navigating.swift in Sources */,
 				402C420E241EFB5400DC2376 /* Router+UITabBarControllerDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4065D8692426FAC000ABCC6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4065D8962426FCDC00ABCC6C /* Routing.swift in Sources */,
+				4065D88F2426FCDC00ABCC6C /* UIWindown+Navigating.swift in Sources */,
+				4065D8972426FCDC00ABCC6C /* NavigationType.swift in Sources */,
+				4065D8932426FCDC00ABCC6C /* Navigating+Default.swift in Sources */,
+				4065D88E2426FCDC00ABCC6C /* Router.swift in Sources */,
+				4065D88D2426FCDC00ABCC6C /* AppURL.swift in Sources */,
+				4065D8902426FCDC00ABCC6C /* UINavigationController+Navigating.swift in Sources */,
+				4065D8912426FCDC00ABCC6C /* UITabBarController+Navigating.swift in Sources */,
+				4065D8922426FCDC00ABCC6C /* Router+UITabBarControllerDelegate.swift in Sources */,
+				4065D8952426FCDC00ABCC6C /* Navigating.swift in Sources */,
+				4065D8942426FCDC00ABCC6C /* Wireframing.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		408027D32427057A00F38E0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				408027E82427058E00F38E0D /* Routing.swift in Sources */,
+				408027E12427058E00F38E0D /* UIWindown+Navigating.swift in Sources */,
+				408027E92427058E00F38E0D /* NavigationType.swift in Sources */,
+				408027E52427058E00F38E0D /* Navigating+Default.swift in Sources */,
+				408027E02427058E00F38E0D /* Router.swift in Sources */,
+				408027DF2427058E00F38E0D /* AppURL.swift in Sources */,
+				408027E22427058E00F38E0D /* UINavigationController+Navigating.swift in Sources */,
+				408027E32427058E00F38E0D /* UITabBarController+Navigating.swift in Sources */,
+				408027E42427058E00F38E0D /* Router+UITabBarControllerDelegate.swift in Sources */,
+				408027E72427058E00F38E0D /* Navigating.swift in Sources */,
+				408027E62427058E00F38E0D /* Wireframing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +577,120 @@
 			};
 			name = Release;
 		};
+		4065D8732426FAC000ABCC6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = UBW6JB7T2F;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Routing/Resources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ipavlidakis.routing;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4065D8742426FAC000ABCC6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = UBW6JB7T2F;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Routing/Resources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ipavlidakis.routing;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		408027DC2427057A00F38E0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = UBW6JB7T2F;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Routing-tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ipavlidakis.vesputio.routing.tvos.Routing-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		408027DD2427057A00F38E0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = UBW6JB7T2F;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Routing-tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ipavlidakis.vesputio.routing.tvos.Routing-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -399,11 +703,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		402C41F4241EF91300DC2376 /* Build configuration list for PBXNativeTarget "Routing" */ = {
+		402C41F4241EF91300DC2376 /* Build configuration list for PBXNativeTarget "RoutingStaticLibrary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				402C41F5241EF91300DC2376 /* Debug */,
 				402C41F6241EF91300DC2376 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4065D8722426FAC000ABCC6C /* Build configuration list for PBXNativeTarget "Routing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4065D8732426FAC000ABCC6C /* Debug */,
+				4065D8742426FAC000ABCC6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		408027DE2427057A00F38E0D /* Build configuration list for PBXNativeTarget "Routing-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				408027DC2427057A00F38E0D /* Debug */,
+				408027DD2427057A00F38E0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
