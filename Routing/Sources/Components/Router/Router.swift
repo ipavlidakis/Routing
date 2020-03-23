@@ -31,6 +31,13 @@ public final class Router: NSObject, Routing {
 
             if navigator.isWindow {
                 navigator.navigator_window?.rootViewController = activeRouter?.navigator.navigator_viewController
+                UIView.transition(
+                    with: navigator.navigator_window!,
+                    duration: 0.3,
+                    options: .transitionCrossDissolve,
+                    animations: {},
+                    completion:{ _ in }
+                )
             } else if navigator.isTabBarController {
                 navigator.navigator_tabBarController?.selectedIndex = index
             }
