@@ -11,5 +11,7 @@ import UIKit
 
 extension UIWindow: Navigating {
 
+    public var topViewController: UIViewController? { (rootViewController as! Navigating).topViewController }
+
     var navigator: Navigating? { rootViewController as? Navigating }
 }

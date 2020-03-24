@@ -11,6 +11,7 @@ import UIKit
 
 public protocol Routing {
 
+    var isPassive: Bool { get }
     var wireframe: Wireframing? { get }
     var identifier: String { get }
     var isActive: Bool { get }

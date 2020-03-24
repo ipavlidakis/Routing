@@ -76,34 +76,48 @@ public extension Navigating {
 
     // MARK: Preent & Dismiss
 
-    func navigator_present(viewController: UIViewController, animated: Bool, completion: CompletionBlock?) {
+    func navigator_presentFromTop(viewController: UIViewController, animated: Bool, completion: CompletionBlock?) {
 
-        if isWindow { navigator_window?.navigator?.navigator_present(viewController: viewController, animated: animated, completion: completion) }
-        else {
-            guard let me = navigator_viewController,
-                viewController != presentedViewController else {
-                    completion?()
-                    return
+        if isWindow {
+            navigator_window?.navigator?.topViewController?.present(viewController, animated: animated, completion: completion)
+        } else if var target = topViewController {
+            while let _target = target.presentedViewController {
+                target = _target
             }
-
-            me.present(viewController, animated: animated, completion: completion)
+            target.present(viewController, animated: animated, completion: completion)
+        } else {
+            navigator_viewController?.present(viewController, animated: animated, completion: completion)
         }
     }
 
-    func navigator_dismiss(animated: Bool, completion: CompletionBlock?) {
-        if isWindow { navigator_window?.navigator?.navigator_dismiss(animated: animated, completion: completion) }
-        else if navigator_viewController?.presentedViewController != nil { navigator_viewController?.dismiss(animated: animated, completion: completion) }
-        else { completion?() }
-    }
+func navigator_present(viewController: UIViewController, animated: Bool, completion: CompletionBlock?) {
 
-    // MARK: Combinations
+    if isWindow { navigator_window?.navigator?.navigator_present(viewController: viewController, animated: animated, completion: completion) }
+    else {
+        guard let me = navigator_viewController,
+            viewController != presentedViewController else {
+                completion?()
+                return
+        }
 
-    func navigator_popOrDismissToRoot(animated: Bool, completion: CompletionBlock?) {
-        if isWindow { navigator_window?.navigator?.navigator_popOrDismissToRoot(animated: animated, completion: completion) }
-        else if isNavigationController {
-            navigator_dismiss(animated: animated) { [weak self] in
-                self?.navigator_popToRoot(animated: animated, completion: completion)
-            }
-        } else { assertionFailure() }
+        me.present(viewController, animated: animated, completion: completion)
     }
+}
+
+func navigator_dismiss(animated: Bool, completion: CompletionBlock?) {
+    if isWindow { navigator_window?.navigator?.navigator_dismiss(animated: animated, completion: completion) }
+    else if navigator_viewController?.presentedViewController != nil { navigator_viewController?.dismiss(animated: animated, completion: completion) }
+    else { completion?() }
+}
+
+// MARK: Combinations
+
+func navigator_popOrDismissToRoot(animated: Bool, completion: CompletionBlock?) {
+    if isWindow { navigator_window?.navigator?.navigator_popOrDismissToRoot(animated: animated, completion: completion) }
+    else if isNavigationController {
+        navigator_dismiss(animated: animated) { [weak self] in
+            self?.navigator_popToRoot(animated: animated, completion: completion)
+        }
+    } else { assertionFailure() }
+}
 }

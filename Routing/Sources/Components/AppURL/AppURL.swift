@@ -83,3 +83,40 @@ public struct AppURL: CustomStringConvertible {
         return AppURL(identifier: host, parameters: parameters)
     }
 }
+
+extension AppURL {
+
+    public static let templateParameterKey = "appURLErrorTemplateParameter"
+    public static let errorIdentifier = "appURLError"
+    public static func makeError(parameters: [String: Any]) -> AppURL {
+        AppURL(identifier: errorIdentifier, parameters: parameters)
+    }
+
+    public struct ActionTemplate {
+        public let name: String
+        public let isCancel: Bool
+        public let action: (() -> Void)?
+
+        public init(name: String,
+                    isCancel: Bool,
+                    action: (() -> Void)?) {
+            self.name = name
+            self.isCancel = isCancel
+            self.action = action
+        }
+    }
+
+    public struct ErrorTemplate {
+        public let title: String?
+        public let message: String?
+        public let actions: [ActionTemplate]
+
+        public init(title: String?,
+                    message: String?,
+                    actions: [ActionTemplate]) {
+            self.title = title
+            self.message = message
+            self.actions = actions
+        }
+    }
+}

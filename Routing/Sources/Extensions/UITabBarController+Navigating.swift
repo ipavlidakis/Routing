@@ -9,4 +9,9 @@
 import Foundation
 import UIKit
 
-extension UITabBarController: Navigating {}
+extension UITabBarController: Navigating {
+
+    public var topViewController: UIViewController? {
+        presentedViewController ?? selectedViewController
+    }
+}

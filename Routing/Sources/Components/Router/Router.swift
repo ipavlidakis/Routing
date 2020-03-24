@@ -11,6 +11,7 @@ import UIKit
 
 public final class Router: NSObject, Routing {
 
+    public let isPassive: Bool = false
     public var isActive: Bool { isActiveClosure() }
     public let identifier: String = UUID().uuidString
     public let wireframe: Wireframing?
@@ -98,12 +99,19 @@ public final class Router: NSObject, Routing {
         if activeRouter?.canHandle(url) == true {
             activeRouter?.handle(url)
         } else if let router = routers.first(where: { $0.canHandle(url) }) {
+            if router.isPassive {
+                router.handle(url)
+                return
+            }
+
             activeRouter = router
             self.handle(url)
         } else if let wireframe = wireframe, wireframe.canHandle(url) {
             let navigation = wireframe.navigation(for: url)
 
             switch navigation {
+                case .presentFromTop(let viewController, let animated):
+                    navigator.navigator_presentFromTop(viewController: viewController, animated: animated, completion: nil)
                 case .popOrDismissToRoot(let animated):
                     navigator.navigator_popOrDismissToRoot(animated: animated, completion: nil)
                 case .popToRoot(let animated):

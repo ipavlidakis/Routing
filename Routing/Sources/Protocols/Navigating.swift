@@ -27,6 +27,8 @@ public protocol Navigating: AnyObject {
 
     var presentedViewController: UIViewController? { get }
 
+    var topViewController: UIViewController? { get }
+
     func navigator_transition(completion: CompletionBlock?)
 
     func navigator_push(viewController: UIViewController, animated: Bool, completion: CompletionBlock?)

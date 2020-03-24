@@ -13,6 +13,7 @@ public enum NavigationType {
     case none
     case push(UIViewController, Bool)
     case present(UIViewController, Bool)
+    case presentFromTop(UIViewController, Bool)
     case popToRoot(Bool)
     case popOrDismissToRoot(Bool)
     case dismissAndPresent(UIViewController, Bool)
