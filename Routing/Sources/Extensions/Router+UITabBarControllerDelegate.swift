@@ -28,4 +28,14 @@ extension Router: UITabBarControllerDelegate {
         activeRouter = newActiveRouter
         tabBarVieControllerDelegate?.tabBarController?(tabBarController, didSelect: viewController)
     }
+
+    #if !os(tvOS)
+    public func tabBarControllerSupportedInterfaceOrientations(_ tabBarController: UITabBarController) -> UIInterfaceOrientationMask {
+        tabBarVieControllerDelegate?.tabBarControllerSupportedInterfaceOrientations?(tabBarController) ?? .portrait
+    }
+
+    public func tabBarControllerPreferredInterfaceOrientationForPresentation(_ tabBarController: UITabBarController) -> UIInterfaceOrientation {
+        tabBarVieControllerDelegate?.tabBarControllerPreferredInterfaceOrientationForPresentation?(tabBarController) ?? .portrait
+    }
+    #endif
 }
