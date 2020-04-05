@@ -136,6 +136,8 @@ public final class Router: NSObject, Routing {
                     navigator.navigator_pop(animated: animated, completion: { [weak self] in
                         self?.navigator.navigator_push(viewController: viewController, animated: animated, completion: nil)
                     })
+                case .pushFromTop(let viewController, let animated):
+                    navigator.navigator_pushFromTop(viewController: viewController, animated: animated, completion: nil)
                 #if targetEnvironment(macCatalyst)
                 case .newWindow(let activityType, let userInfo):
                     let userActivity = NSUserActivity(activityType: activityType)

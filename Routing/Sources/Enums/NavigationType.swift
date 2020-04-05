@@ -20,6 +20,7 @@ public enum NavigationType {
     case dismissAndPush(UIViewController, Bool)
     case popAndPresent(UIViewController, Bool)
     case popAndPush(UIViewController, Bool)
+    case pushFromTop(UIViewController, Bool)
     #if targetEnvironment(macCatalyst)
     case newWindow(String, [AnyHashable: Any])
     #endif

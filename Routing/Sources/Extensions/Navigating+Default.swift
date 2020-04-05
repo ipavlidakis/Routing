@@ -58,6 +58,23 @@ public extension Navigating {
         } else { assertionFailure() }
     }
 
+    func navigator_pushFromTop(viewController: UIViewController, animated: Bool, completion: CompletionBlock?) {
+
+        if isWindow {
+            let topNavigationController = (navigator_window?.navigator?.topViewController as? UINavigationController) ?? navigator_window?.navigator?.topViewController?.navigationController
+            topNavigationController?.pushViewController(viewController, animated: animated)
+        } else if var target = topViewController {
+            while let _target = target.presentedViewController {
+                target = _target
+            }
+            if let navigationController = target as? UINavigationController {
+                navigationController.pushViewController(viewController, animated: animated)
+            }
+        } else {
+            navigator_push(viewController: viewController, animated: animated, completion: nil)
+        }
+    }
+
     func navigator_pop(animated: Bool, completion: CompletionBlock?) {
         if isWindow { navigator_window?.navigator?.navigator_pop(animated: animated, completion: completion) }
         else if isNavigationController {
