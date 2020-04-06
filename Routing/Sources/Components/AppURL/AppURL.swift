@@ -95,13 +95,16 @@ extension AppURL {
     public struct ActionTemplate {
         public let name: String
         public let isCancel: Bool
+        public let isDestructive: Bool
         public let action: (() -> Void)?
 
         public init(name: String,
                     isCancel: Bool,
+                    isDestructive: Bool,
                     action: (() -> Void)?) {
             self.name = name
             self.isCancel = isCancel
+            self.isDestructive = isDestructive
             self.action = action
         }
     }
