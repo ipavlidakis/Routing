@@ -92,6 +92,20 @@ extension AppURL {
         AppURL(identifier: errorIdentifier, parameters: parameters)
     }
 
+    public static func makeAlert(
+        title: String? = nil,
+        message: String? = nil,
+        actions: [ActionTemplate] = []
+    ) -> AppURL {
+        AppURL.makeError(parameters: [
+            AppURL.templateParameterKey: AppURL.ErrorTemplate(
+                title: title,
+                message: message,
+                actions: actions
+            )
+        ])
+    }
+
     public struct ActionTemplate {
         public let name: String
         public let isCancel: Bool
