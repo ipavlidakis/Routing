@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public struct AppURL: CustomStringConvertible {
     
@@ -104,6 +105,23 @@ extension AppURL {
                 )
         ])
     }
+
+    public static func makeActionSheet(
+        title: String? = nil,
+        message: String? = nil,
+        actions: [ActionTemplate] = []
+    ) -> AppURL {
+        AppURL(
+            identifier: alertIdentifier,
+            parameters: [
+                AppURL.templateParameterKey: AppURL.AlertTemplate(
+                    style: .actionSheet,
+                    title: title,
+                    message: message,
+                    actions: actions
+                )
+        ])
+    }
     
     public struct ActionTemplate {
         public let name: String
@@ -124,14 +142,17 @@ extension AppURL {
     }
     
     public struct AlertTemplate {
+        public let style: UIAlertController.Style
         public let title: String?
         public let message: String?
         public let actions: [ActionTemplate]
         
         public init(
+            style: UIAlertController.Style = .alert,
             title: String?,
             message: String?,
             actions: [ActionTemplate]) {
+            self.style = style
             self.title = title
             self.message = message
             self.actions = actions
