@@ -143,7 +143,7 @@ public final class Router: NSObject, Routing {
                     let userActivity = NSUserActivity(activityType: activityType)
                     userActivity.addUserInfoEntries(from:userInfo)
                     UIApplication.shared.requestSceneSessionActivation(nil, userActivity: userActivity, options: nil) { (error) in
-                        print("ERROR: \(error)")
+                        debugPrint("ERROR: \(error)")
                     }
                 #endif
                 case .none:
