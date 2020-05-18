@@ -88,6 +88,8 @@ public extension Navigating {
         else if let navigationController = navigator_navigationController, navigationController.viewControllers.count > 1 {
             navigationController.popToRootViewController(animated: animated)
             navigator_transition(completion: completion)
+        } else {
+            completion?()
         }
     }
 

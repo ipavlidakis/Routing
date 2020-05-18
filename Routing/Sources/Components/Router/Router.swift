@@ -95,49 +95,52 @@ public final class Router: NSObject, Routing {
         return true
     }
 
-    public func handle(_ url: AppURL) {
+    public func handle(
+        _ url: AppURL,
+        completion: (() -> Void)?
+    ) {
         if activeRouter?.canHandle(url) == true {
-            activeRouter?.handle(url)
+            activeRouter?.handle(url, completion: completion)
         } else if let router = routers.first(where: { $0.canHandle(url) }) {
             if router.isPassive {
-                router.handle(url)
+                router.handle(url, completion: completion)
                 return
             }
 
             activeRouter = router
-            self.handle(url)
+            self.handle(url, completion: completion)
         } else if let wireframe = wireframe, wireframe.canHandle(url) {
             let navigation = wireframe.navigation(for: url)
 
             switch navigation {
                 case .presentFromTop(let viewController, let animated):
-                    navigator.navigator_presentFromTop(viewController: viewController, animated: animated, completion: nil)
+                    navigator.navigator_presentFromTop(viewController: viewController, animated: animated, completion: completion)
                 case .popOrDismissToRoot(let animated):
-                    navigator.navigator_popOrDismissToRoot(animated: animated, completion: nil)
+                    navigator.navigator_popOrDismissToRoot(animated: animated, completion: completion)
                 case .popToRoot(let animated):
-                    navigator.navigator_popToRoot(animated: animated, completion: nil)
+                    navigator.navigator_popToRoot(animated: animated, completion: completion)
                 case .push(let viewController, let animated):
-                    navigator.navigator_push(viewController: viewController, animated: animated, completion: nil)
+                    navigator.navigator_push(viewController: viewController, animated: animated, completion: completion)
                 case .present(let viewController, let animated):
-                    navigator.navigator_present(viewController: viewController, animated: animated, completion: nil)
+                    navigator.navigator_present(viewController: viewController, animated: animated, completion: completion)
                 case .dismissAndPresent(let viewController, let animated):
                     navigator.navigator_dismiss(animated: animated, completion: { [weak self] in
-                        self?.navigator.navigator_present(viewController: viewController, animated: animated, completion: nil)
+                        self?.navigator.navigator_present(viewController: viewController, animated: animated, completion: completion)
                     })
                 case .dismissAndPush(let viewController, let animated):
                     navigator.navigator_dismiss(animated: animated, completion: { [weak self] in
-                        self?.navigator.navigator_push(viewController: viewController, animated: animated, completion: nil)
+                        self?.navigator.navigator_push(viewController: viewController, animated: animated, completion: completion)
                     })
                 case .popAndPresent(let viewController, let animated):
                     navigator.navigator_pop(animated: animated, completion: { [weak self] in
-                        self?.navigator.navigator_present(viewController: viewController, animated: animated, completion: nil)
+                        self?.navigator.navigator_present(viewController: viewController, animated: animated, completion: completion)
                     })
                 case .popAndPush(let viewController, let animated):
                     navigator.navigator_pop(animated: animated, completion: { [weak self] in
-                        self?.navigator.navigator_push(viewController: viewController, animated: animated, completion: nil)
+                        self?.navigator.navigator_push(viewController: viewController, animated: animated, completion: completion)
                     })
                 case .pushFromTop(let viewController, let animated):
-                    navigator.navigator_pushFromTop(viewController: viewController, animated: animated, completion: nil)
+                    navigator.navigator_pushFromTop(viewController: viewController, animated: animated, completion: completion)
                 #if targetEnvironment(macCatalyst)
                 case .newWindow(let activityType, let userInfo):
                     let userActivity = NSUserActivity(activityType: activityType)

@@ -20,7 +20,16 @@ public protocol Routing {
     func invalidate()
     func add(_ router: Routing) 
     func canHandle(_ url: AppURL) -> Bool
-    func handle(_ url: AppURL)
+    func handle(_ url: AppURL, completion: (() -> Void)?)
     func router(for rootViewController: UIViewController) -> Routing?
     func didBecomeActiveAfterInvalidation()
+}
+
+extension Routing {
+
+    public func handle(
+        _ url: AppURL
+    ) {
+        handle(url, completion: nil)
+    }
 }
