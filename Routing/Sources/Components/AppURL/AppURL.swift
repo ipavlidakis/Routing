@@ -109,7 +109,8 @@ extension AppURL {
     public static func makeActionSheet(
         title: String? = nil,
         message: String? = nil,
-        actions: [ActionTemplate] = []
+        actions: [ActionTemplate] = [],
+        sourceView: UIView
     ) -> AppURL {
         AppURL(
             identifier: alertIdentifier,
@@ -118,7 +119,8 @@ extension AppURL {
                     style: .actionSheet,
                     title: title,
                     message: message,
-                    actions: actions
+                    actions: actions,
+                    sourceView: sourceView
                 )
         ])
     }
@@ -146,16 +148,20 @@ extension AppURL {
         public let title: String?
         public let message: String?
         public let actions: [ActionTemplate]
+        public let sourceView: UIView?
         
         public init(
             style: UIAlertController.Style = .alert,
             title: String?,
             message: String?,
-            actions: [ActionTemplate]) {
+            actions: [ActionTemplate],
+            sourceView: UIView? = nil
+        ) {
             self.style = style
             self.title = title
             self.message = message
             self.actions = actions
+            self.sourceView = sourceView
         }
     }
 }
