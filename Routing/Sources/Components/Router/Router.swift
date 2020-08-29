@@ -28,8 +28,6 @@ public final class Router: NSObject, Routing {
                 let index = routers.enumerated().compactMap({ $0.element.identifier == identifier ? $0.offset : nil }).first
                 else { return }
 
-            activeRouter?.didBecomeActiveAfterInvalidation()
-
             if navigator.isWindow {
                 navigator.navigator_window?.rootViewController = activeRouter?.navigator.navigator_viewController
                 UIView.transition(
@@ -72,7 +70,13 @@ public final class Router: NSObject, Routing {
     }
 
     public func invalidate() {
-        activeRouter = routers.first { $0.isActive }
+        let newActiveRouter = routers.first { $0.isActive }
+
+        if newActiveRouter?.identifier != activeRouter?.identifier {
+            newActiveRouter?.didBecomeActiveAfterInvalidation()
+        }
+
+        self.activeRouter = newActiveRouter
     }
 
     public func add(_ router: Routing) {
