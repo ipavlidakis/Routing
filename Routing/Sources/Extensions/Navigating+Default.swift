@@ -109,7 +109,7 @@ public extension Navigating {
         }
     }
 
-func navigator_present(viewController: UIViewController, animated: Bool, completion: CompletionBlock?) {
+    func navigator_present(viewController: UIViewController, animated: Bool, completion: CompletionBlock?) {
 
     if isWindow { navigator_window?.navigator?.navigator_present(viewController: viewController, animated: animated, completion: completion) }
     else {
@@ -123,11 +123,23 @@ func navigator_present(viewController: UIViewController, animated: Bool, complet
     }
 }
 
-func navigator_dismiss(animated: Bool, completion: CompletionBlock?) {
+    func navigator_dismiss(animated: Bool, completion: CompletionBlock?) {
     if isWindow { navigator_window?.navigator?.navigator_dismiss(animated: animated, completion: completion) }
     else if navigator_viewController?.presentedViewController != nil { navigator_viewController?.dismiss(animated: animated, completion: completion) }
     else { completion?() }
 }
+
+    func navigation_dismissTop(animated: Bool, completion: CompletionBlock?) {
+        if isWindow {
+            navigator_window?.navigator?.topViewController?.dismiss(animated: animated, completion: completion)
+        } else if var target = topViewController {
+            while let _target = target.presentedViewController {
+                target = _target
+            }
+            target.dismiss(animated: animated, completion: completion)
+        }
+    }
+
 
 // MARK: Combinations
 

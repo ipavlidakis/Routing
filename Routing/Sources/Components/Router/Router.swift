@@ -127,6 +127,10 @@ public final class Router: NSObject, Routing {
                     navigator.navigator_push(viewController: viewController, animated: animated, completion: completion)
                 case .present(let viewController, let animated):
                     navigator.navigator_present(viewController: viewController, animated: animated, completion: completion)
+                case .dismiss(let animated):
+                    navigator.navigator_dismiss(animated: animated, completion: completion)
+                case .dismissTop(let animated):
+                    navigator.navigation_dismissTop(animated: animated, completion: completion)
                 case .dismissAndPresent(let viewController, let animated):
                     navigator.navigator_dismiss(animated: animated, completion: { [weak self] in
                         self?.navigator.navigator_present(viewController: viewController, animated: animated, completion: completion)
