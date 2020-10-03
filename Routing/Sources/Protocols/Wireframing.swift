@@ -14,4 +14,12 @@ public protocol Wireframing {
     func canHandle(_ url: AppURL) -> Bool
     func navigation(for url: AppURL) -> NavigationType
     func initialViewController() -> UIViewController
+    func viewController(for url: AppURL) -> UIViewController?
+}
+
+extension Wireframing {
+
+    func viewController(for url: AppURL) -> UIViewController? {
+        return nil
+    }
 }
