@@ -165,3 +165,17 @@ extension AppURL {
         }
     }
 }
+
+extension AppURL {
+
+    public static let showDetailsInSplitViewControllerIdentifier = "split.details.at.index"
+
+    public static func showDetailsInSplitViewController(
+        for index: Int
+    ) -> AppURL {
+        AppURL(
+            identifier: AppURL.showDetailsInSplitViewControllerIdentifier,
+            parameters: ["index": index]
+        )
+    }
+}

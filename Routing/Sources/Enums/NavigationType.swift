@@ -26,4 +26,6 @@ public enum NavigationType {
     #if targetEnvironment(macCatalyst)
     case newWindow(String, [AnyHashable: Any])
     #endif
+    case setSplitRootViewController(UIViewController, Bool)
+    case setDetailsViewController(UIViewController, Bool)
 }

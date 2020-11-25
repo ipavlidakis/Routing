@@ -30,6 +30,12 @@
 		4065D8952426FCDC00ABCC6C /* Navigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C41FE241EFA5200DC2376 /* Navigating.swift */; };
 		4065D8962426FCDC00ABCC6C /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C4207241EFAEB00DC2376 /* Routing.swift */; };
 		4065D8972426FCDC00ABCC6C /* NavigationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C41F9241EF9E000DC2376 /* NavigationType.swift */; };
+		407CCBD72561A3D800A9C59B /* UISplitViewController+Navigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407CCBD62561A3D800A9C59B /* UISplitViewController+Navigating.swift */; };
+		407CCBDB2561A3E000A9C59B /* UISplitViewController+Navigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407CCBD62561A3D800A9C59B /* UISplitViewController+Navigating.swift */; };
+		407CCBE02561ADDA00A9C59B /* Router+UISplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407CCBDF2561ADDA00A9C59B /* Router+UISplitViewControllerDelegate.swift */; };
+		407CCBE12561ADDA00A9C59B /* Router+UISplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407CCBDF2561ADDA00A9C59B /* Router+UISplitViewControllerDelegate.swift */; };
+		407CCBE725695F5D00A9C59B /* NSObject+AssociatedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407CCBE625695F5D00A9C59B /* NSObject+AssociatedObjects.swift */; };
+		407CCBE825695F5D00A9C59B /* NSObject+AssociatedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407CCBE625695F5D00A9C59B /* NSObject+AssociatedObjects.swift */; };
 		408027DB2427057A00F38E0D /* Routing_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 408027D92427057A00F38E0D /* Routing_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		408027DF2427058E00F38E0D /* AppURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C4216241F007300DC2376 /* AppURL.swift */; };
 		408027E02427058E00F38E0D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402C420B241EFB1200DC2376 /* Router.swift */; };
@@ -72,6 +78,9 @@
 		4065D86D2426FAC000ABCC6C /* Routing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Routing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4065D86F2426FAC000ABCC6C /* RoutingFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoutingFramework.h; sourceTree = "<group>"; };
 		4065D8702426FAC000ABCC6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		407CCBD62561A3D800A9C59B /* UISplitViewController+Navigating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISplitViewController+Navigating.swift"; sourceTree = "<group>"; };
+		407CCBDF2561ADDA00A9C59B /* Router+UISplitViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+UISplitViewControllerDelegate.swift"; sourceTree = "<group>"; };
+		407CCBE625695F5D00A9C59B /* NSObject+AssociatedObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+AssociatedObjects.swift"; sourceTree = "<group>"; };
 		408027D72427057A00F38E0D /* Routing_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Routing_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		408027D92427057A00F38E0D /* Routing_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Routing_tvOS.h; sourceTree = "<group>"; };
 		408027DA2427057A00F38E0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -168,7 +177,10 @@
 				402C4203241EFAC100DC2376 /* UINavigationController+Navigating.swift */,
 				402C4205241EFACC00DC2376 /* UITabBarController+Navigating.swift */,
 				402C420D241EFB5400DC2376 /* Router+UITabBarControllerDelegate.swift */,
+				407CCBDF2561ADDA00A9C59B /* Router+UISplitViewControllerDelegate.swift */,
 				402C420F241EFBE800DC2376 /* Navigating+Default.swift */,
+				407CCBD62561A3D800A9C59B /* UISplitViewController+Navigating.swift */,
+				407CCBE625695F5D00A9C59B /* NSObject+AssociatedObjects.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -388,8 +400,11 @@
 				4065D8902426FCDC00ABCC6C /* UINavigationController+Navigating.swift in Sources */,
 				4065D8912426FCDC00ABCC6C /* UITabBarController+Navigating.swift in Sources */,
 				4065D8922426FCDC00ABCC6C /* Router+UITabBarControllerDelegate.swift in Sources */,
+				407CCBD72561A3D800A9C59B /* UISplitViewController+Navigating.swift in Sources */,
+				407CCBE725695F5D00A9C59B /* NSObject+AssociatedObjects.swift in Sources */,
 				4065D8952426FCDC00ABCC6C /* Navigating.swift in Sources */,
 				4065D8942426FCDC00ABCC6C /* Wireframing.swift in Sources */,
+				407CCBE02561ADDA00A9C59B /* Router+UISplitViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,8 +421,11 @@
 				408027E22427058E00F38E0D /* UINavigationController+Navigating.swift in Sources */,
 				408027E32427058E00F38E0D /* UITabBarController+Navigating.swift in Sources */,
 				408027E42427058E00F38E0D /* Router+UITabBarControllerDelegate.swift in Sources */,
+				407CCBDB2561A3E000A9C59B /* UISplitViewController+Navigating.swift in Sources */,
+				407CCBE825695F5D00A9C59B /* NSObject+AssociatedObjects.swift in Sources */,
 				408027E72427058E00F38E0D /* Navigating.swift in Sources */,
 				408027E62427058E00F38E0D /* Wireframing.swift in Sources */,
+				407CCBE12561ADDA00A9C59B /* Router+UISplitViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

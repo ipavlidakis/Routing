@@ -14,11 +14,13 @@ public extension Navigating {
     var isWindow: Bool { self is UIWindow }
     var isTabBarController: Bool { self is UITabBarController }
     var isNavigationController: Bool { self is UINavigationController }
+    var isSplitViewController: Bool { self is RoutingSplitViewController }
     var isViewController: Bool { self is UIViewController }
 
     var navigator_window: UIWindow? { self as? UIWindow }
     var navigator_tabBarController: UITabBarController? { self as? UITabBarController }
     var navigator_navigationController: UINavigationController? { self as? UINavigationController }
+    var navigator_splitViewController: RoutingSplitViewController? { self as? RoutingSplitViewController }
     var navigator_viewController: UIViewController? { self as? UIViewController }
 
     var selectedIndex: Int {
@@ -32,8 +34,9 @@ public extension Navigating {
 
     // MARK: - Methods
 
-    func navigator_transition(completion: CompletionBlock?) {
-
+    func navigator_transition(
+        completion: CompletionBlock?
+    ) {
         if isWindow {
             navigator_window?.navigator?.navigator_transition(completion: completion)
         } else {
@@ -50,16 +53,30 @@ public extension Navigating {
 
     // MARK: Push & Pop
 
-    func navigator_push(viewController: UIViewController, animated: Bool, completion: CompletionBlock?) {
-        if isWindow { navigator_window?.navigator?.navigator_push(viewController: viewController, animated: animated, completion: completion) }
-        else if isNavigationController {
+    func navigator_push(
+        viewController: UIViewController,
+        animated: Bool,
+        completion: CompletionBlock?
+    ) {
+        if isWindow {
+            navigator_window?.navigator?.navigator_push(
+                viewController: viewController,
+                animated: animated,
+                completion: completion
+            )
+        } else if isNavigationController {
             navigator_navigationController?.pushViewController(viewController, animated: animated)
             navigator_transition(completion: completion)
-        } else { assertionFailure() }
+        } else {
+            assertionFailure()
+        }
     }
 
-    func navigator_pushFromTop(viewController: UIViewController, animated: Bool, completion: CompletionBlock?) {
-
+    func navigator_pushFromTop(
+        viewController: UIViewController,
+        animated: Bool,
+        completion: CompletionBlock?
+    ) {
         if isWindow {
             let topNavigationController = (navigator_window?.navigator?.topViewController as? UINavigationController) ?? navigator_window?.navigator?.topViewController?.navigationController
             topNavigationController?.pushViewController(viewController, animated: animated)
@@ -75,7 +92,10 @@ public extension Navigating {
         }
     }
 
-    func navigator_pop(animated: Bool, completion: CompletionBlock?) {
+    func navigator_pop(
+        animated: Bool,
+        completion: CompletionBlock?
+    ) {
         if isWindow { navigator_window?.navigator?.navigator_pop(animated: animated, completion: completion) }
         else if isNavigationController {
             navigator_navigationController?.popViewController(animated: animated)
@@ -83,7 +103,10 @@ public extension Navigating {
         } else { assertionFailure() }
     }
 
-    func navigator_popToRoot(animated: Bool, completion: CompletionBlock?) {
+    func navigator_popToRoot(
+        animated: Bool,
+        completion: CompletionBlock?
+    ) {
         if isWindow { navigator_window?.navigator?.navigator_popToRoot(animated: animated, completion: completion) }
         else if let navigationController = navigator_navigationController, navigationController.viewControllers.count > 1 {
             navigationController.popToRootViewController(animated: animated)
@@ -93,10 +116,13 @@ public extension Navigating {
         }
     }
 
-    // MARK: Preent & Dismiss
+    // MARK: Present & Dismiss
 
-    func navigator_presentFromTop(viewController: UIViewController, animated: Bool, completion: CompletionBlock?) {
-
+    func navigator_presentFromTop(
+        viewController: UIViewController,
+        animated: Bool,
+        completion: CompletionBlock?
+    ) {
         if isWindow {
             navigator_window?.navigator?.topViewController?.present(viewController, animated: animated, completion: completion)
         } else if var target = topViewController {
@@ -109,8 +135,11 @@ public extension Navigating {
         }
     }
 
-    func navigator_present(viewController: UIViewController, animated: Bool, completion: CompletionBlock?) {
-
+    func navigator_present(
+        viewController: UIViewController,
+        animated: Bool,
+        completion: CompletionBlock?
+    ) {
     if isWindow { navigator_window?.navigator?.navigator_present(viewController: viewController, animated: animated, completion: completion) }
     else {
         guard let me = navigator_viewController,
@@ -123,13 +152,19 @@ public extension Navigating {
     }
 }
 
-    func navigator_dismiss(animated: Bool, completion: CompletionBlock?) {
+    func navigator_dismiss(
+        animated: Bool,
+        completion: CompletionBlock?
+    ) {
     if isWindow { navigator_window?.navigator?.navigator_dismiss(animated: animated, completion: completion) }
     else if navigator_viewController?.presentedViewController != nil { navigator_viewController?.dismiss(animated: animated, completion: completion) }
     else { completion?() }
 }
 
-    func navigation_dismissTop(animated: Bool, completion: CompletionBlock?) {
+    func navigation_dismissTop(
+        animated: Bool,
+        completion: CompletionBlock?
+    ) {
         if isWindow {
             navigator_window?.navigator?.topViewController?.dismiss(animated: animated, completion: completion)
         } else if var target = topViewController {
@@ -140,10 +175,54 @@ public extension Navigating {
         }
     }
 
+    // MARK: SplitViewController
 
-// MARK: Combinations
+    func navigator_updateSplitRoot(
+        viewController: UIViewController,
+        animated: Bool,
+        completion: CompletionBlock?
+    ) {
+        if isWindow { navigator_window?.navigator?.navigator_updateDetail(viewController: viewController, animated: animated, completion: completion) }
+        else {
+            guard let me = navigator_splitViewController else {
+                completion?()
+                return
+            }
 
-func navigator_popOrDismissToRoot(animated: Bool, completion: CompletionBlock?) {
+            if #available(iOS 14.0, *) {
+                me.setViewController(viewController, for: .primary)
+            } else {
+                me.viewControllers = [viewController]
+            }
+        }
+    }
+
+    func navigator_updateDetail(
+        viewController: UIViewController,
+        animated: Bool,
+        completion: CompletionBlock?
+    ) {
+        if isWindow { navigator_window?.navigator?.navigator_updateDetail(viewController: viewController, animated: animated, completion: completion) }
+        else {
+            guard let me = navigator_splitViewController else {
+                completion?()
+                return
+            }
+
+            if #available(iOS 14.0, *) {
+                me.setViewController(viewController, for: .secondary)
+            } else {
+                me.showDetailViewController(viewController, sender: self)
+            }
+        }
+    }
+
+    // MARK: Combinations
+
+    func navigator_popOrDismissToRoot(
+        animated: Bool,
+        completion: CompletionBlock?
+    ) {
     if isWindow { navigator_window?.navigator?.navigator_popOrDismissToRoot(animated: animated, completion: completion) }
     else if isNavigationController {
         navigator_dismiss(animated: animated) { [weak self] in

@@ -26,7 +26,9 @@ public final class Router: NSObject, Routing {
                 let identifier = activeRouter?.identifier,
                 identifier != oldValue?.identifier,
                 let index = routers.enumerated().compactMap({ $0.element.identifier == identifier ? $0.offset : nil }).first
-                else { return }
+            else {
+                return
+            }
 
             if navigator.isWindow {
                 navigator.navigator_window?.rootViewController = activeRouter?.navigator.navigator_viewController
@@ -39,16 +41,28 @@ public final class Router: NSObject, Routing {
                 )
             } else if navigator.isTabBarController {
                 navigator.navigator_tabBarController?.selectedIndex = index
+            } else if navigator.isSplitViewController {
+                guard let targetViewController = navigator.navigator_splitViewController?.router(at: index) else {
+                    assertionFailure()
+                    return
+                }
+
+                navigator.navigator_updateDetail(
+                    viewController: targetViewController,
+                    animated: true,
+                    completion: nil
+                )
             }
         }
     }
     weak var tabBarVieControllerDelegate: UITabBarControllerDelegate?
+    weak var splitViewControllerControllerDelegate: UISplitViewControllerDelegate?
 
     public init(
         navigator: Navigating,
         wireframe: Wireframing?,
-        isActiveClosure: @escaping () -> Bool) {
-
+        isActiveClosure: @escaping () -> Bool
+    ) {
         self.navigator = navigator
         self.wireframe = wireframe
         self.isActiveClosure = isActiveClosure
@@ -60,16 +74,22 @@ public final class Router: NSObject, Routing {
                 self.navigator.navigator_navigationController?.viewControllers = [wireframe.initialViewController()]
             } else if navigator.isTabBarController {
                 self.navigator.navigator_tabBarController?.viewControllers = [wireframe.initialViewController()]
+            } else if navigator.isSplitViewController {
+                self.navigator.navigator_splitViewController?.addRouter(wireframe.initialViewController())
             }
         }
 
         if let tabBarController = navigator.navigator_tabBarController {
             self.tabBarVieControllerDelegate = tabBarController.delegate
             tabBarController.delegate = self
+        } else if let splitViewController = navigator.navigator_splitViewController {
+            self.splitViewControllerControllerDelegate = splitViewController.delegate
+            splitViewController.delegate = self
         }
     }
 
-    public func invalidate() {
+    public func invalidate(
+    ) {
         let newActiveRouter = routers.first { $0.isActive }
 
         if newActiveRouter?.identifier != activeRouter?.identifier {
@@ -79,18 +99,41 @@ public final class Router: NSObject, Routing {
         self.activeRouter = newActiveRouter
     }
 
-    public func add(_ router: Routing) {
+    public func add(
+        _ router: Routing
+    ) {
         routers.append(router)
 
         if navigator.isWindow { invalidate() }
-        else if let tabBarController = navigator.navigator_tabBarController, let root = router.navigator.navigator_viewController {
+        else if
+            let tabBarController = navigator.navigator_tabBarController,
+            let root = router.navigator.navigator_viewController
+        {
             tabBarController.viewControllers = (tabBarController.viewControllers ?? []) + [root]
+        } else if
+            let splitViewController = navigator.navigator_splitViewController,
+            let root = router.navigator.navigator_viewController
+        {
+            splitViewController.addRouter(root)
+            if activeRouter == nil {
+                activeRouter = routers.first
+            }
         }
     }
 
-    public func canHandle(_ url: AppURL) -> Bool {
-
-        if wireframe?.canHandle(url) == true { return true }
+    public func canHandle(
+        _ url: AppURL
+    ) -> Bool {
+        if wireframe?.canHandle(url) == true {
+            return true
+        } else if
+            url.identifier == AppURL.showDetailsInSplitViewControllerIdentifier,
+            let index = url.parameters["index"] as? Int,
+            let splitViewController = navigator.navigator_splitViewController,
+            splitViewController.router(at: index) != nil
+        {
+            return true
+        }
 
         guard activeRouter?.canHandle(url) == true else {
             return routers.first { $0.canHandle(url) } != nil
@@ -105,6 +148,20 @@ public final class Router: NSObject, Routing {
     ) {
         if activeRouter?.canHandle(url) == true {
             activeRouter?.handle(url, completion: completion)
+        } else if
+            url.identifier == AppURL.showDetailsInSplitViewControllerIdentifier,
+            let index = url.parameters["index"] as? Int,
+            let splitViewController = navigator.navigator_splitViewController,
+            let viewController = splitViewController.router(at: index),
+            index >= 0, routers.endIndex > index
+        {
+            let router = routers[index]
+            navigator.navigator_updateDetail(
+                viewController: viewController,
+                animated: true,
+                completion: nil
+            )
+            activeRouter = router
         } else if let router = routers.first(where: { $0.canHandle(url) }) {
             if router.isPassive {
                 router.handle(url, completion: completion)
@@ -157,6 +214,10 @@ public final class Router: NSObject, Routing {
                         debugPrint("ERROR: \(error)")
                     }
                 #endif
+                case .setDetailsViewController(let viewController, let animated):
+                    navigator.navigator_updateDetail(viewController: viewController, animated: animated, completion: completion)
+                case .setSplitRootViewController(let viewController, let animated):
+                    navigator.navigator_updateSplitRoot(viewController: viewController, animated: animated, completion: completion)
                 case .none:
                     assertionFailure("Invalid navigationType received")
                     break
@@ -164,16 +225,21 @@ public final class Router: NSObject, Routing {
         }
     }
 
-    public func router(for rootViewController: UIViewController) -> Routing? {
+    public func router(
+        for rootViewController: UIViewController
+    ) -> Routing? {
         routers.first { $0.navigator.navigator_viewController == rootViewController }
     }
 
-    public func didBecomeActiveAfterInvalidation() {
+    public func didBecomeActiveAfterInvalidation(
+    ) {
         if navigator.isNavigationController {
             navigator.navigator_navigationController?.navigator_dismiss(animated: false, completion: { [weak self] in
                 self?.navigator.navigator_navigationController?.navigator_popToRoot(animated: false, completion: nil)
             })
         } else if navigator.isTabBarController {
+            activeRouter = routers.first
+        } else if navigator.isSplitViewController {
             activeRouter = routers.first
         }
     }
