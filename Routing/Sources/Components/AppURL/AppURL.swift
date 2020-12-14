@@ -9,8 +9,16 @@
 import Foundation
 import UIKit
 
-public struct AppURL: CustomStringConvertible {
-    
+public struct AppURL: CustomStringConvertible, Hashable {
+
+    public static func == (lhs: AppURL, rhs: AppURL) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(identifier)
+    }
+
     public let identifier: String
     public let parameters: [String: Any]
     
