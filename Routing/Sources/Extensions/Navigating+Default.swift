@@ -189,11 +189,19 @@ public extension Navigating {
                 return
             }
 
+            #if os(tvOS)
+            if #available(tvOS 14.0, *) {
+                me.setViewController(viewController, for: .primary)
+            } else {
+                me.viewControllers = [viewController]
+            }
+            #else
             if #available(iOS 14.0, *) {
                 me.setViewController(viewController, for: .primary)
             } else {
                 me.viewControllers = [viewController]
             }
+            #endif
         }
     }
 
@@ -209,11 +217,19 @@ public extension Navigating {
                 return
             }
 
+            #if os(tvOS)
+            if #available(tvOS 14.0, *) {
+                me.setViewController(viewController, for: .secondary)
+            } else {
+                me.showDetailViewController(viewController, sender: self)
+            }
+            #else
             if #available(iOS 14.0, *) {
                 me.setViewController(viewController, for: .secondary)
             } else {
                 me.showDetailViewController(viewController, sender: self)
             }
+            #endif
         }
     }
 

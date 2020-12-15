@@ -14,11 +14,19 @@ public final class RoutingSplitViewController: UISplitViewController, Navigating
     private var routerViewControllers: [UIViewController] = []
 
     public var topViewController: UIViewController? {
+        #if os(tvOS)
+        if #available(tvOS 14.0, *) {
+            return self.viewController(for: .secondary)
+        } else {
+            return viewControllers.last
+        }
+        #else
         if #available(iOS 14.0, *) {
             return self.viewController(for: .secondary)
         } else {
             return viewControllers.last
         }
+        #endif
     }
 
     public func addRouter(
