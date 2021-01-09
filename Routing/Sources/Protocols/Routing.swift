@@ -18,7 +18,8 @@ public protocol Routing {
     var navigator: Navigating { get }
 
     func invalidate()
-    func add(_ router: Routing) 
+    func add(_ router: Routing)
+    func remove(_ router: Routing)
     func canHandle(_ url: AppURL) -> Bool
     func handle(_ url: AppURL, completion: (() -> Void)?)
     func router(for rootViewController: UIViewController) -> Routing?
@@ -32,4 +33,5 @@ extension Routing {
     ) {
         handle(url, completion: nil)
     }
+    
 }

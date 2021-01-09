@@ -121,6 +121,16 @@ public final class Router: NSObject, Routing {
         }
     }
 
+    public func remove(
+        _ router: Routing
+    ) {
+        guard
+            let index = routers.firstIndex(where: { $0.identifier == router.identifier })
+        else { return }
+
+        routers.remove(at: index)
+    }
+
     public func canHandle(
         _ url: AppURL
     ) -> Bool {
@@ -242,5 +252,10 @@ public final class Router: NSObject, Routing {
         } else if navigator.isSplitViewController {
             activeRouter = routers.first
         }
+    }
+
+    public func removeAll() {
+        routers.removeAll()
+        activeRouter = nil
     }
 }
